@@ -2,7 +2,17 @@ const express = require('express');
 const dotenv = require('dotenv');
 const cors = require('cors');
 const path = require('path');
+
+// Configuration
+const connectDB = require('./configs/db.config');
+
+// Routes
+const authRoutes = require('./routes/auth.route');
+const profileRoutes = require('./routes/profile.route')
+
 dotenv.config();
+
+
 const app = express();
 app.use(express.json());
 
@@ -12,11 +22,6 @@ app.use(cors({
     credentials: true
 }));
 
-// Configuration
-const connectDB = require('./configs/db.config');
-
-// Routes
-const authRoutes = require('./routes/auth.route');
 
 
 
