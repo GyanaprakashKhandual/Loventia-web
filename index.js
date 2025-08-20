@@ -1,7 +1,12 @@
 const express = require('express');
 const dotenv = require('dotenv');
 const cors = require('cors');
+const path = require('path');
+
+// Configuration
 const connectDB = require('./configs/db.config');
+
+// Routes
 const authRoutes = require('./routes/auth.route');
 
 
@@ -10,6 +15,12 @@ const app = express();
 app.use(express.json());
 
 connectDB();
+
+app.use(express.static(path.join(__dirname, 'public')));
+
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
 
 app.use('/api/auth', authRoutes);
 
