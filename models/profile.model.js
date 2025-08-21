@@ -6,6 +6,10 @@ const profileSchema = new mongoose.Schema({
     ref: 'User',
     required: true,
   },
+  bgPic: {
+    type: String,
+    default: 'No BG Image'
+  },
   profilePic: {
     type: String,
     default: "No Profile Picture",
@@ -76,8 +80,16 @@ const profileSchema = new mongoose.Schema({
     ],
     default: "Other",
   },
+  about: {
+    type: String,
+    default: 'No About'
+  },
+  contactNo: {
+    type: String,
+    default: 'No Contact No'
+  }
 });
 
 
 const Profile = mongoose.model('Profile', profileSchema);
-module.exports = profileSchema;
+module.exports = Profile;
